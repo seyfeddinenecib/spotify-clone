@@ -18,6 +18,7 @@ export default function validateRoute(handler) {
         res.status(401)
         res.json({ error: 'bad token' })
       }
+      return handler(req, res, user)
     } else {
       res.status(401)
       res.json({ error: 'bad token' })

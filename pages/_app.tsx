@@ -28,6 +28,18 @@ const theme = extendTheme({
       },
     },
   },
+  scrollbars: {
+    width: '10px',
+    height: '10px',
+    backgroundColor: '#f5f5f5',
+    thumb: {
+      backgroundColor: 'red',
+      borderRadius: '10px',
+      '&:hover': {
+        backgroundColor: '#555555',
+      },
+    },
+  },
 })
 
 function MyApp({ Component, pageProps }) {
