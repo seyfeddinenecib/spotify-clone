@@ -14,8 +14,6 @@ export default async function handler(
       data: {
         email: email,
         password: bcrypt.hashSync(password, salt),
-        firstName: firstName,
-        lastName: lastName,
       },
     })
   } catch (e) {
