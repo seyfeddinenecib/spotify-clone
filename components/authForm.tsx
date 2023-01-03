@@ -20,7 +20,8 @@ const AuthForm: FC<{ mode: 'signin' | 'signup' }> = function AuthForm({
     const response = await auth(mode, {
       email,
       password,
-    }).then((res) => res.json())
+    })
+
     setIsLoading(false)
   }
 

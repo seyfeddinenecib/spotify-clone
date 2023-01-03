@@ -1,14 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import jwt from 'jsonwebtoken'
 import prisma from './prisma'
+import { User } from '@prisma/client'
 
 export default function validateRoute(handler) {
-  return (req: NextApiRequest, res: NextApiResponse) => {
+  return async (req: NextApiRequest, res: NextApiResponse) => {
     const token = req.cookies.access_token
     if (token) {
       try {
-        const { id } = jwt.verify(token, 'hamza')
-        var user = prisma.user.findUnique({
+        const { id } = verifyToken(token)
+        var user = await prisma.user.findUnique({
           where: {
             id,
           },
@@ -24,4 +25,8 @@ export default function validateRoute(handler) {
       res.json({ error: 'bad token' })
     }
   }
+}
+export function verifyToken(token: string): User {
+  const user = jwt.verify(token, 'hamza')
+  return user
 }
