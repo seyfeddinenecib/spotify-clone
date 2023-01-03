@@ -2,6 +2,7 @@ import GradientLayout from '../../components/gradientLayout'
 import prisma from '../../lib/prisma'
 import { verifyToken } from '../../lib/auth'
 import SongsTable from '../../components/songsTable'
+
 const playlist = ({ playlist }) => {
   return (
     <GradientLayout
@@ -34,11 +35,18 @@ const generateBGColor = (id) => {
 }
 
 export const getServerSideProps = async ({ query, req }) => {
-  const { id } = verifyToken(req.cookies.access_token)
+  let user
+  try {
+    user = verifyToken(req.cookies.access_token)
+  } catch (e) {
+    return {
+      path: '/signin',
+    }
+  }
   const [playlist] = await prisma.playlist.findMany({
     where: {
       id: parseInt(query.id),
-      userId: id,
+      userId: user.id,
     },
     include: {
       songs: {
@@ -53,7 +61,6 @@ export const getServerSideProps = async ({ query, req }) => {
       },
     },
   })
-  console.log(playlist)
   return {
     props: { playlist },
   }
