@@ -20,13 +20,14 @@ export default function Home({ artists }) {
       <Box paddingX="40px">
         <Box marginBottom="30px">
           <Text fontSize="2xl">Top artists this month</Text>
-          <Text fontSize="md">only visible to you</Text>
+          <Text fontSize="small">only visible to you</Text>
         </Box>
         <Flex>
           {artists.map((artist) => (
             <Box paddingRight="20px" width="19%">
-              <Box bg="gray.900" padding="10px" borderRadius="4px" width="100%">
+              <Box bg="gray.900" padding="20px" borderRadius="8px" width="100%">
                 <Image
+                  boxShadow="dark-lg"
                   src="https://placekitten.com/300/300"
                   borderRadius="100%"
                 />

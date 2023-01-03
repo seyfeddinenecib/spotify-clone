@@ -67,14 +67,9 @@ const Sidebar = () => {
             {playlists.map((item) => (
               <ListItem paddingX="20px" fontSize="16px" key={item.id}>
                 <LinkBox>
-                  <LinkOverlay>{item.name}</LinkOverlay>
-                </LinkBox>
-              </ListItem>
-            ))}
-            {playlists.map((item) => (
-              <ListItem paddingX="20px" fontSize="16px" key={item.id}>
-                <LinkBox>
-                  <LinkOverlay>{item.name}</LinkOverlay>
+                  <NextLink href={`/playlist/${item.id}`} passHref>
+                    <LinkOverlay>{item.name}</LinkOverlay>
+                  </NextLink>
                 </LinkBox>
               </ListItem>
             ))}
