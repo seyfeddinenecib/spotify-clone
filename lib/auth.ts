@@ -5,7 +5,7 @@ import { User } from '@prisma/client'
 
 export default function validateRoute(handler) {
   return async (req: NextApiRequest, res: NextApiResponse) => {
-    const token = req.cookies.access_token
+    const token = req.cookies[process.env.ACCESS_TOKEN_COOKIE]
     if (token) {
       try {
         const { id } = verifyToken(token)

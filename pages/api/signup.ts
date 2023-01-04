@@ -29,7 +29,7 @@ export default async function handler(
   )
   res.setHeader(
     'Set-Cookie',
-    cookie.serialize('access_token', token, {
+    cookie.serialize(process.env.ACCESS_TOKEN_COOKIE, token, {
       httpOnly: true,
       maxAge: 8 * 60 * 60,
       path: '/',

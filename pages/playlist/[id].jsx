@@ -37,7 +37,7 @@ const generateBGColor = (id) => {
 export const getServerSideProps = async ({ query, req }) => {
   let user
   try {
-    user = verifyToken(req.cookies.access_token)
+    user = verifyToken(req.cookies[process.env.ACCESS_TOKEN_COOKIE])
   } catch (e) {
     return {
       path: '/signin',
