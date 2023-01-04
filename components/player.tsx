@@ -21,7 +21,7 @@ const Player = ({ songs, activeSong }) => {
   const [repeat, setRepeat] = useState(false)
   const [shuffle, setShuffle] = useState(false)
   const [duration, setDuration] = useState(0.0)
-  const setActiveSong = useStoreActions((store) => store.changeActiveSong)
+  const setActiveSong = useStoreActions((store: any) => store.changeActiveSong)
   const repeatRef = useRef(repeat)
   const shuffleRef = useRef(shuffle)
   const soundRef = useRef(null)
