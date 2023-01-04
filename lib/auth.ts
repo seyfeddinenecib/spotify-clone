@@ -27,6 +27,6 @@ export default function validateRoute(handler) {
   }
 }
 export function verifyToken(token: string): User {
-  const user = jwt.verify(token, 'hamza')
+  const user = jwt.verify(token, process.env.TOKEN_SECRET)
   return user
 }

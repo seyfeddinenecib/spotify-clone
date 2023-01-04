@@ -23,7 +23,7 @@ export default async function handler(
         id: user.id,
         time: Date.now(),
       },
-      'hamza',
+      process.env.TOKEN_SECRET,
       { expiresIn: '8h' }
     )
     res.setHeader(
